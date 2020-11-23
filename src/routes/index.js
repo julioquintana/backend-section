@@ -15,10 +15,10 @@ module.exports = function({ HomeRouters }) {
         .use(helmet())
         .use(compression());
 
+    router.use(ResponseTime);
     apiRoutes.use("/home", HomeRouters);
     router.use("/v1/api", apiRoutes);
 
-    router.use(ResponseTime);
     router.use(NotFoundMiddleware);
     router.use(ErrorMiddleware);
     return router;
